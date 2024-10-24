@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "dev": "webpack-dev-server --open --config webpack.prod.js",
-    "build": "NODE_ENV=production webpack --config webpack.prod.js"
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +14,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.9",
     "@babel/preset-env": "^7.25.9",
+    "autoprefixer": "^10.4.20",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
     "css-loader": "^7.1.2",
@@ -41,7 +43,12 @@
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
-    "autoprefixer": "^10.4.20"
+    "lodash": "^4.17.21"
+  },
+  "lint-staged": {
+    "./src/js/*.js": [
+      "prettier --write",
+      "eslint src/js/*.js --fix-dry-run"
+    ]
   }
 }
